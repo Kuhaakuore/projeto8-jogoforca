@@ -9,7 +9,7 @@ import { StyledJogo } from "./styles/Jogo.styled";
 import palavras from "../palavras";
 
 
-export default function Jogo({ gameState, setGameState, errorsCounter, word, setWord, wordDisplay, setWordDisplay}) {
+export default function Jogo({ gameState, setGameState, errorsCounter, setErrorsCounter, word, setWord, wordDisplay, setWordDisplay, playerStatus, setPlayerStatus, setChosenLetters}) {
     const images = [forca0, forca1, forca2, forca3, forca4, forca5, forca6];
     
     function chooseWord() {
@@ -18,10 +18,22 @@ export default function Jogo({ gameState, setGameState, errorsCounter, word, set
             word = palavras[Math.floor(Math.random()*palavras.length)];
             setWord(word);
             const wordArray = word.split("");
-            for (let i = 0; i < wordArray.length; i++) wordDisplay.push("_");
+            for (let i = 0; i < wordArray.length; i++) wordDisplay.push(" _");
             setWordDisplay(wordDisplay);
-            console.log(word);
         }
+        if (gameState === "game in progress" || playerStatus.length > 0) {
+            word = palavras[Math.floor(Math.random()*palavras.length)];
+            setWord(word);
+            setWordDisplay([]);
+            const wordArray = word.split("");
+            const newArray = [];
+            for (let i = 0; i < wordArray.length; i++) newArray.push(" _");
+            setWordDisplay(newArray);
+            setErrorsCounter(0);
+            setChosenLetters([]);
+            setPlayerStatus("");
+        }
+        console.log(word);
     }
 
     return (
@@ -29,7 +41,7 @@ export default function Jogo({ gameState, setGameState, errorsCounter, word, set
             <StyledJogo>
                 <img src={images[errorsCounter]} />
                 <button onClick={chooseWord}>Escolher Palavra</button>
-                <div className='word'>{wordDisplay.join(" ")}</div>
+                <div className={`word ${playerStatus}`}>{wordDisplay.join("")}</div>
             </StyledJogo>
         </>
     );

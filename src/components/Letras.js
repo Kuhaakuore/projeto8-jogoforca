@@ -11,6 +11,7 @@ export default function Letras({
   setWordDisplay,
   chosenLetters,
   setChosenLetters,
+  setPlayerStatus,
 }) {
   const alfabeto = [
     "a",
@@ -42,16 +43,32 @@ export default function Letras({
   ];
 
   function chooseLetter(letter) {
+    const newWordArray = [...wordDisplay];
     if (!chosenLetters.includes(letter)) {
       const newArray = [...chosenLetters, letter];
       setChosenLetters(newArray);
-      const newWordArray = [...wordDisplay];
       for (let i = 0; i < word.length; i++) {
-        if (letter.normalize() === word[i].normalize()) newWordArray[i] = letter;
+        if (letter.normalize() === word[i].normalize())
+          newWordArray[i] = letter;
       }
       setWordDisplay(newWordArray);
+      if (!newWordArray.includes(" _")) {
+        console.log(newWordArray);
+        setGameState("pre game");
+        setPlayerStatus("won");
+      }
     }
-    if (!word.includes(letter)) setErrorsCounter(errorsCounter + 1);
+    if (!word.includes(letter)) {
+      setErrorsCounter(errorsCounter + 1);
+      if (errorsCounter + 1 === 6) {
+        setGameState("pre game");
+        for (let i = 0; i < word.length; i++) {
+          newWordArray[i] = word[i];
+        }
+        setWordDisplay(newWordArray);
+        setPlayerStatus("lost");
+      }
+    }
   }
 
   return (

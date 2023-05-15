@@ -52,4 +52,13 @@ export const StyledJogo = styled.div`
     margin-right: 53px;
     color: #000000;
   }
+
+  .won {
+    color: #27AE60;
+  }
+
+  .lost {
+    color: #FF0000;
+  }
+
 `;

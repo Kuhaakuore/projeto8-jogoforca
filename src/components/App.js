@@ -1,7 +1,6 @@
 import "../css/reset.css";
 import Jogo from "./Jogo.js";
 import Letras from "./Letras.js";
-import palavras from "../palavras";
 import { useState } from "react";
 
 export default function App() {
@@ -10,6 +9,7 @@ export default function App() {
   const [word, setWord] = useState("");
   const [wordDisplay, setWordDisplay] = useState([]);
   const [chosenLetters, setChosenLetters] = useState([]);
+  const [playerStatus, setPlayerStatus] = useState("");
 
   return (
     <div className="App">
@@ -17,10 +17,14 @@ export default function App() {
         gameState={gameState}
         setGameState={setGameState}
         errorsCounter={errorsCounter}
+        setErrorsCounter={setErrorsCounter}
         word={word}
         setWord={setWord}
         wordDisplay={wordDisplay}
         setWordDisplay={setWordDisplay}
+        playerStatus={playerStatus}
+        setPlayerStatus={setPlayerStatus}
+        setChosenLetters={setChosenLetters}
       />
       <Letras
         gameState={gameState}
@@ -32,6 +36,7 @@ export default function App() {
         setWordDisplay={setWordDisplay}
         chosenLetters={chosenLetters}
         setChosenLetters={setChosenLetters}
+        setPlayerStatus={setPlayerStatus}
       />
     </div>
   );
