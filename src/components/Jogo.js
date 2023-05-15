@@ -27,7 +27,7 @@ export default function Jogo({ gameState, setGameState, errorsCounter, setErrors
             setWordDisplay([]);
             const wordArray = word.split("");
             const newArray = [];
-            for (let i = 0; i < wordArray.length; i++) newArray.push("_");
+            for (let i = 0; i < wordArray.length; i++) newArray.push(" _");
             setWordDisplay(newArray);
             setErrorsCounter(0);
             setChosenLetters([]);
