@@ -44,13 +44,14 @@ export default function Letras({
 
   function chooseLetter(letter) {
     const newWordArray = [...wordDisplay];
-    const normalizezWord = word.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    const normalizezWord = word
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
     if (!chosenLetters.includes(letter)) {
       const newArray = [...chosenLetters, letter];
       setChosenLetters(newArray);
       for (let i = 0; i < word.length; i++) {
-        if (letter.normalize() === normalizezWord[i])
-          newWordArray[i] = word[i];
+        if (letter.normalize() === normalizezWord[i]) newWordArray[i] = word[i];
       }
       setWordDisplay(newWordArray);
       if (!newWordArray.includes(" _")) {
@@ -76,7 +77,7 @@ export default function Letras({
       <StyledLetras>
         {alfabeto.map((letra) =>
           gameState === "pre game" ? (
-            <button type="button" key={letra} disabled>
+            <button type="button" key={letra} disabled data-test="letter">
               {letra.toUpperCase()}
             </button>
           ) : (
@@ -86,6 +87,7 @@ export default function Letras({
               className={chosenLetters.includes(letra) ? "" : "enabled"}
               disabled={chosenLetters.includes(letra) ? true : false}
               onClick={() => chooseLetter(letra)}
+              data-test="letter"
             >
               {letra.toUpperCase()}
             </button>
