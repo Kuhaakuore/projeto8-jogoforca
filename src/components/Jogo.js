@@ -33,7 +33,6 @@ export default function Jogo({ gameState, setGameState, errorsCounter, setErrors
             setChosenLetters([]);
             setPlayerStatus("");
         }
-        console.log(word);
     }
 
     return (
