@@ -13,7 +13,7 @@ export const StyledLetras = styled.div`
     width: 40px;
     height: 40px;
     border-radius: 3px;
-    border: #7aa7c7;
+    border: 1px solid #7aa7c7;
     background-color: #9faab5;
     font-family: "Roboto";
     font-style: normal;
@@ -21,5 +21,15 @@ export const StyledLetras = styled.div`
     font-size: 16px;
     line-height: 19px;
     color: #798A9F;
+    cursor: pointer;
+  }
+
+  .enabled {
+    background-color: #E1ECF4;
+    color: #39739D;
+  }
+
+  .test{
+    background-color: red;
   }
 `;
