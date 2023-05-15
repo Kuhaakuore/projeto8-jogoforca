@@ -44,21 +44,21 @@ export default function Letras({
 
   function chooseLetter(letter) {
     const newWordArray = [...wordDisplay];
+    const normalizezWord = word.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     if (!chosenLetters.includes(letter)) {
       const newArray = [...chosenLetters, letter];
       setChosenLetters(newArray);
       for (let i = 0; i < word.length; i++) {
-        if (letter.normalize() === word[i].normalize())
-          newWordArray[i] = letter;
+        if (letter.normalize() === normalizezWord[i])
+          newWordArray[i] = word[i];
       }
       setWordDisplay(newWordArray);
       if (!newWordArray.includes(" _")) {
-        console.log(newWordArray);
         setGameState("pre game");
         setPlayerStatus("won");
       }
     }
-    if (!word.includes(letter)) {
+    if (!normalizezWord.includes(letter)) {
       setErrorsCounter(errorsCounter + 1);
       if (errorsCounter + 1 === 6) {
         setGameState("pre game");

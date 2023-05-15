@@ -1,6 +1,7 @@
 import "../css/reset.css";
 import Jogo from "./Jogo.js";
 import Letras from "./Letras.js";
+import Chute from "./Chute.js";
 import { useState } from "react";
 
 export default function App() {
@@ -37,6 +38,14 @@ export default function App() {
         chosenLetters={chosenLetters}
         setChosenLetters={setChosenLetters}
         setPlayerStatus={setPlayerStatus}
+      />
+      <Chute
+        word={word}
+        setWordDisplay={setWordDisplay}
+        gameState={gameState}
+        setGameState={setGameState}
+        setPlayerStatus={setPlayerStatus}
+        setErrorsCounter={setErrorsCounter}
       />
     </div>
   );

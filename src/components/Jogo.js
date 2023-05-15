@@ -39,9 +39,9 @@ export default function Jogo({ gameState, setGameState, errorsCounter, setErrors
     return (
         <>
             <StyledJogo>
-                <img src={images[errorsCounter]} />
-                <button onClick={chooseWord}>Escolher Palavra</button>
-                <div className={`word ${playerStatus}`}>{wordDisplay.join("")}</div>
+                <img src={images[errorsCounter]} data-test="game-image"/>
+                <button onClick={chooseWord} data-test="choose-word">Escolher Palavra</button>
+                <div className={`word ${playerStatus}`} data-test="word">{wordDisplay.join("")}</div>
             </StyledJogo>
         </>
     );
