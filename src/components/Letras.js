@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { StyledLetras } from "./styles/Letras.styled";
 
 export default function Letras({

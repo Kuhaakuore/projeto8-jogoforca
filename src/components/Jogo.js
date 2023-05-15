@@ -27,7 +27,7 @@ export default function Jogo({ gameState, setGameState, errorsCounter, setErrors
             setWordDisplay([]);
             const wordArray = word.split("");
             const newArray = [];
-            for (let i = 0; i < wordArray.length; i++) newArray.push(" _");
+            for (let i = 0; i < wordArray.length; i++) newArray.push("_");
             setWordDisplay(newArray);
             setErrorsCounter(0);
             setChosenLetters([]);
@@ -38,7 +38,7 @@ export default function Jogo({ gameState, setGameState, errorsCounter, setErrors
     return (
         <>
             <StyledJogo>
-                <img src={images[errorsCounter]} data-test="game-image"/>
+                <img src={images[errorsCounter]} data-test="game-image" alt=''/>
                 <button onClick={chooseWord} data-test="choose-word">Escolher Palavra</button>
                 <div className={`word ${playerStatus}`} data-test="word">{wordDisplay.join("")}</div>
             </StyledJogo>
