@@ -11,6 +11,7 @@ export default function App() {
   const [wordDisplay, setWordDisplay] = useState([]);
   const [chosenLetters, setChosenLetters] = useState([]);
   const [playerStatus, setPlayerStatus] = useState("");
+  const [inputText, setInputText] = useState("");
 
   return (
     <div className="App">
@@ -26,6 +27,7 @@ export default function App() {
         playerStatus={playerStatus}
         setPlayerStatus={setPlayerStatus}
         setChosenLetters={setChosenLetters}
+        setInputText={setInputText}
       />
       <Letras
         gameState={gameState}
@@ -46,6 +48,8 @@ export default function App() {
         setGameState={setGameState}
         setPlayerStatus={setPlayerStatus}
         setErrorsCounter={setErrorsCounter}
+        inputText={inputText}
+        setInputText={setInputText}
       />
     </div>
   );

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { StyledChute } from "./styles/Chute.styled";
 
 export default function Chute({
@@ -8,8 +7,9 @@ export default function Chute({
   setGameState,
   setPlayerStatus,
   setErrorsCounter,
+  inputText,
+  setInputText
 }) {
-  const [inputText, setInputText] = useState("");
 
   function guessAnswer() {
     if (inputText.length > 0) {
