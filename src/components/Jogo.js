@@ -9,21 +9,19 @@ import { StyledJogo } from "./styles/Jogo.styled";
 import palavras from "../palavras";
 
 
-export default function Jogo({ gameState, setGameState, errorsCounter, setWord, wordDisplay, setWordDisplay}) {
+export default function Jogo({ gameState, setGameState, errorsCounter, word, setWord, wordDisplay, setWordDisplay}) {
     const images = [forca0, forca1, forca2, forca3, forca4, forca5, forca6];
-    const word = palavras[Math.floor(Math.random()*palavras.length)];
-    const wordArray = word.split("");
-
+    
     function chooseWord() {
         if(gameState === "pre game") {
             setGameState("game in progress");
+            word = palavras[Math.floor(Math.random()*palavras.length)];
             setWord(word);
+            const wordArray = word.split("");
+            for (let i = 0; i < wordArray.length; i++) wordDisplay.push("_");
+            setWordDisplay(wordDisplay);
+            console.log(word);
         }
-        for (let i = 0; i < wordArray.length; i++) {
-            if (i !== wordArray.length - 1) wordDisplay += "_ ";
-            else wordDisplay += "_";
-        }
-        setWordDisplay(wordDisplay);
     }
 
     return (
@@ -31,7 +29,7 @@ export default function Jogo({ gameState, setGameState, errorsCounter, setWord, 
             <StyledJogo>
                 <img src={images[errorsCounter]} />
                 <button onClick={chooseWord}>Escolher Palavra</button>
-                <div className='word'>{wordDisplay}</div>
+                <div className='word'>{wordDisplay.join(" ")}</div>
             </StyledJogo>
         </>
     );
