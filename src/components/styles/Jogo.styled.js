@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 export const StyledJogo = styled.div`
     margin: 0 auto;
-    width: 1025px;
-    height: 839px;
+    width: 100%;
+    max-width: 1025px;
+    height: auto;
     display: flex;
     justify-content: space-between;
     margin-top: 59px;
